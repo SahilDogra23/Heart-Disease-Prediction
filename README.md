@@ -13,6 +13,7 @@ An end-to-end Machine Learning project that predicts the presence of heart disea
 > **Logistic Regression** was selected as the final model for its superior recall — critical in healthcare where missing a diagnosis is dangerous.
 
 ## 📁 Project Structure
+```
 Heart_Disease_prediction/
 │
 ├── data/
@@ -23,6 +24,7 @@ Heart_Disease_prediction/
 │   └── confusion_matrix.png
 │   └── feature_importance.png
 └── README.md
+```
 
 ## 🔍 Key Findings
 
