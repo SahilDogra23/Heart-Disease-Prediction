@@ -53,7 +53,7 @@ FastAPI REST API  ←→  Streamlit Web App
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/SahilDogra23/Heart-Disease-Prediction.git
+git clone https://github.com/SahilDogra23/Heart-Disease-Prediction-MLOps.git
 cd Heart-Disease-Prediction
 pip install -r requirements.txt
 ```
