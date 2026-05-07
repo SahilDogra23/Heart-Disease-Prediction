@@ -36,7 +36,7 @@ if st.button("Predict", use_container_width=True, type="primary"):
         "exang": exang, "oldpeak": oldpeak, "slope": slope, "ca": ca, "thal": thal
     }
     try:
-        response = requests.post("http://127.0.0.1:8000/predict", json=payload)
+        response = requests.post("https://heart-disease-api-jh78.onrender.com/predict", json=payload)
         result = response.json()
         if result["prediction"] == 1:
             st.error(f"**{result['result']}**")
