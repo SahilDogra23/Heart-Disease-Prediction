@@ -1,68 +1,97 @@
-# 🫀 Heart Disease Prediction
+# 🫀 Heart Disease Prediction — Production ML System
 
-An end-to-end Machine Learning project that predicts the presence of heart disease using clinical features. Built following the framework from **Aurélien Géron's "Hands-On Machine Learning" Chapter 2**.
-
-## 📊 Results
-
-| Model | Accuracy | Recall (Disease) | F1 Score |
-|-------|----------|-----------------|----------|
-| Logistic Regression ✅ | 82% | 85% | 84% |
-| SVM | 77% | 82% | 79% |
-| Random Forest | 75% | 79% | 78% |
-
-> **Logistic Regression** was selected as the final model for its superior recall — critical in healthcare where missing a diagnosis is dangerous.
-
-## 📁 Project Structure
-```
-Heart_Disease_prediction/
-│
-├── data/
-│   └── heart.csv
-├── notebooks/
-│   └── heart_disease.ipynb
-├── images/
-│   └── confusion_matrix.png
-│   └── feature_importance.png
-└── README.md
-```
-
-## 🔍 Key Findings
-
-- **Chest pain type (cp)** was the strongest predictor of heart disease
-- **Age and cholesterol** — commonly assumed risk factors — were surprisingly weak predictors
-- Dataset had **723 duplicate rows** — catching and removing them was critical to avoid a false 100% accuracy
-- Final model catches **85% of actual heart disease patients** (recall)
-
-## 🛠️ Tech Stack
+An end-to-end Machine Learning system that predicts the presence of heart disease using clinical features. Built following the framework from **Aurélien Géron's "Hands-On Machine Learning" Chapter 2** and deployed to production.
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-orange)
-![Pandas](https://img.shields.io/badge/Pandas-Data-green)
-![Seaborn](https://img.shields.io/badge/Seaborn-Viz-lightblue)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-009688)
+![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-FF4B4B)
+![Render](https://img.shields.io/badge/Render-Deployed-46E3B7)
 
-## ⚙️ Methodology
+## 🌐 Live Demo
+| Component | URL |
+|-----------|-----|
+| 🖥️ Web App | [heart-disease-prediction.streamlit.app](https://heart-disease-prediction-bekd7nprm3xyizjtd2twp2.streamlit.app) |
+| ⚙️ REST API | [heart-disease-api-jh78.onrender.com](https://heart-disease-api-jh78.onrender.com) |
+| 📖 API Docs | [/docs](https://heart-disease-api-jh78.onrender.com/docs) |
 
-1. **EDA** — Correlation heatmap, age distribution, target balance
-2. **Data Cleaning** — Removed 723 duplicate rows from 1025 total
-3. **Model Training** — Logistic Regression, Random Forest, SVM
-4. **Hyperparameter Tuning** — GridSearchCV optimizing for Recall
-5. **Evaluation** — Confusion matrix, classification report, feature importance
+## 🏗️ System Architecture
+``` Raw Clinical Data (CSV)
+↓
+Data Cleaning & EDA
+(Removed 723 duplicates)
+↓
+Model Training & Tuning
+(GridSearchCV → 82% accuracy, 85% recall)
+↓
+Saved Model (.pkl)
+↓
+FastAPI REST API  ←→  Streamlit Web App
+(Render)               (Streamlit Cloud) ```
 
-## 🚀 How to Run
+## 📊 Model Performance
 
+| Metric | Score |
+|--------|-------|
+| Accuracy | 82% |
+| Recall | 85% |
+| Models Compared | Logistic Regression, Random Forest, SVM |
+| Tuning Method | GridSearchCV (optimized for Recall) |
+
+## ⚙️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| ML | Scikit-learn, Pandas, NumPy |
+| API | FastAPI, Uvicorn, Pydantic |
+| Frontend | Streamlit |
+| API Hosting | Render |
+| Frontend Hosting | Streamlit Cloud |
+| Version Control | Git + GitHub |
+
+## 🚀 Run Locally
+
+### 1. Clone the repo
 ```bash
 git clone https://github.com/SahilDogra23/Heart-Disease-Prediction.git
 cd Heart-Disease-Prediction
 pip install -r requirements.txt
-jupyter notebook notebooks/heart_disease.ipynb
 ```
 
-## 📚 Reference
+### 2. Start the API
+```bash
+uvicorn app:app --reload
+```
 
+### 3. Start the frontend (new terminal)
+```bash
+streamlit run streamlit_app.py
+```
+
+### 4. Or call the API directly
+```bash
+curl -X POST "http://127.0.0.1:8000/predict" \
+     -H "Content-Type: application/json" \
+     -d '{"age":52,"sex":1,"cp":0,"trestbps":125,"chol":212,"fbs":0,"restecg":1,"thalach":168,"exang":0,"oldpeak":1.0,"slope":2,"ca":2,"thal":3}'
+```
+
+## 📁 Project Structure
+```Heart_Disease_prediction/
+├── notebooks/
+│   └── heart_disease.ipynb    ← EDA, training, evaluation
+├── models/
+│   ├── heart_disease_model.pkl
+│   └── heart_disease_features.pkl
+├── app.py                     ← FastAPI backend
+├── streamlit_app.py           ← Streamlit frontend
+├── Procfile                   ← Render deployment config
+├── requirements.txt
+└── README.md```
+
+## 📚 Reference
 - Géron, A. (2019). *Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow* — Chapter 2
 - Dataset: [Kaggle Heart Disease Dataset](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset)
 
 ## 👤 Author
-
 **Sahil Dogra**
 [![GitHub](https://img.shields.io/badge/GitHub-SahilDogra23-black)](https://github.com/SahilDogra23)
