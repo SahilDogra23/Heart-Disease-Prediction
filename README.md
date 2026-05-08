@@ -80,14 +80,18 @@ curl -X POST "http://127.0.0.1:8000/predict" \
 ```bash
 docker build -t heart-disease-api .
 ```
-
 ### Run the container
 ```bash
 docker run -p 8000:8000 heart-disease-api
 ```
-
 ### Access the API
 Visit `http://127.0.0.1:8000/docs`
+
+### Pull from Docker Hub
+```bash
+docker pull sahil2323dogra/heart-disease-api:v1
+docker run -p 8000:8000 sahil2323dogra/heart-disease-api:v1
+```
 
 ## 📁 Project Structure
 ```Heart_Disease_prediction/
