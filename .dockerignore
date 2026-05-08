@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.ipynb
+data/
+archive/
+images/
+notebooks/
+streamlit_app.py
+Procfile
+README.md
+.gitignore
+
